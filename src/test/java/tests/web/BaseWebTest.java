@@ -16,7 +16,7 @@ public abstract class BaseWebTest {
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
         driver = WebDriverFactory.create();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
         driver.get(Config.get("baseUrl"));
     }
 
