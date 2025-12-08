@@ -16,9 +16,12 @@ public class AppiumDriverFactory {
         caps.setCapability("platformName", Config.get("appium.platformName"));
         caps.setCapability("deviceName", Config.get("appium.deviceName"));
         caps.setCapability("platformVersion", Config.get("appium.platformVersion"));
+        caps.setCapability("automationName", Config.get("appium.automationName"));
         caps.setCapability("appPackage", Config.get("appium.appPackage"));
         caps.setCapability("appActivity", Config.get("appium.appActivity"));
         caps.setCapability("noReset", Config.getBoolean("appium.noReset", true));
+        caps.setCapability("autoGrantPermissions", true);
+        caps.setCapability("newCommandTimeout", 120);
 
         try {
             return new AndroidDriver(new URL(Config.get("appium.server.url")), caps);
