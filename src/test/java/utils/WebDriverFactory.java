@@ -25,8 +25,10 @@ public class WebDriverFactory {
         if (headless) {
             options.addArguments("--headless=new");
         }
-        options.addArguments("--start-maximized");
-        return new ChromeDriver(options);
+        options.addArguments("--window-size=1366,900");
+        WebDriver driver = new ChromeDriver(options);
+        driver.manage().window().maximize();
+        return driver;
     }
 }
 
