@@ -20,6 +20,7 @@ public abstract class BaseMobilePage {
         return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
+<<<<<<< HEAD
     protected WebElement waitClickable(By locator) {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
@@ -27,6 +28,10 @@ public abstract class BaseMobilePage {
     protected WebElement findByText(String text) {
         return waitVisible(AppiumBy.androidUIAutomator(
                 "new UiSelector().textContains(\"" + text + "\")"));
+=======
+    protected WebElement waitVisible(AppiumBy locator) {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+>>>>>>> feature/mobile-tests-2
     }
 }
 
