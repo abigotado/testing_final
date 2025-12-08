@@ -19,6 +19,11 @@ public class AppiumDriverFactory {
         caps.setCapability("appPackage", Config.get("appium.appPackage"));
         caps.setCapability("appActivity", Config.get("appium.appActivity"));
         caps.setCapability("noReset", Config.getBoolean("appium.noReset", true));
+        String appPath = Config.get("appium.app");
+        if (appPath != null && !appPath.isBlank()) {
+            caps.setCapability("app", appPath);
+        }
+        caps.setCapability("newCommandTimeout", 120);
 
         try {
             return new AndroidDriver(new URL(Config.get("appium.server.url")), caps);
