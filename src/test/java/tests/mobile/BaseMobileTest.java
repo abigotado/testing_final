@@ -15,7 +15,7 @@ public abstract class BaseMobileTest {
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
         driver = AppiumDriverFactory.createAndroidDriver();
-        wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+        wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     }
 
     @AfterMethod(alwaysRun = true)

@@ -6,7 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ArticlePageMobile extends BaseMobilePage {
-    private static final By TITLE = By.id("org.wikipedia:id/view_page_title_text");
+    private static final By TITLE_PRIMARY = By.id("org.wikipedia:id/view_page_title_text");
+    private static final By TITLE_PKG = By.id("org.wikipedia.alpha:id/view_page_title_text");
     private final String previewTitle;
 
     public ArticlePageMobile(AndroidDriver driver, WebDriverWait wait, String previewTitle) {
@@ -15,7 +16,7 @@ public class ArticlePageMobile extends BaseMobilePage {
     }
 
     public String getTitle() {
-        return waitVisible(TITLE).getText();
+        return waitAnyVisible(LONG, TITLE_PRIMARY, TITLE_PKG).getText();
     }
 
     public String getPreviewTitle() {
@@ -28,5 +29,8 @@ public class ArticlePageMobile extends BaseMobilePage {
         return !driver.findElements(AppiumBy.androidUIAutomator(
                 "new UiSelector().textContains(\"" + text + "\")")).isEmpty();
     }
-}
 
+    public boolean scrollToHistory() {
+        return scrollToText("History") || scrollToText("История");
+    }
+}
