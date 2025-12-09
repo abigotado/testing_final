@@ -6,6 +6,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.Config;
 
 public abstract class BaseMobilePage {
     protected final AndroidDriver driver;
@@ -30,9 +31,9 @@ public abstract class BaseMobilePage {
         return wait.until(ExpectedConditions.elementToBeClickable(locator));
     }
 
-    protected WebElement findByText(String text) {
-        return waitVisible(AppiumBy.androidUIAutomator(
-                "new UiSelector().textContains(\"" + text + "\")"));
+    protected AppiumBy findByText(String text) {
+        return (AppiumBy) AppiumBy.androidUIAutomator(
+                "new UiSelector().textContains(\"" + text + "\")");
     }
 
     protected By id(String suffix) {
