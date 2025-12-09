@@ -20,14 +20,11 @@ public class AppiumDriverFactory {
         caps.setCapability("appPackage", Config.get("appium.appPackage"));
         caps.setCapability("appActivity", Config.get("appium.appActivity"));
         caps.setCapability("noReset", Config.getBoolean("appium.noReset", true));
-<<<<<<< HEAD
         caps.setCapability("autoGrantPermissions", true);
-=======
         String appPath = Config.get("appium.app");
         if (appPath != null && !appPath.isBlank()) {
             caps.setCapability("app", appPath);
         }
->>>>>>> feature/mobile-tests-2
         caps.setCapability("newCommandTimeout", 120);
 
         try {
@@ -37,4 +34,3 @@ public class AppiumDriverFactory {
         }
     }
 }
-

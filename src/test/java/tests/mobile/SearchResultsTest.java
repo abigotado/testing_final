@@ -10,14 +10,12 @@ public class SearchResultsTest extends BaseMobileTest {
 
     @Test
     public void shouldShowResultsForJavaQuery() {
-        SearchMobilePage search = new OnboardingPage(driver, wait)
-                .skipIfPresent();
+        new OnboardingPage(driver, wait).skipIfPresent();
 
-        search = new HomeMobilePage(driver, wait)
+        SearchMobilePage search = new HomeMobilePage(driver, wait)
                 .tapSearch()
                 .typeQuery("Java");
 
         Assert.assertTrue(search.getResults().size() > 0, "Search results should not be empty");
     }
 }
-

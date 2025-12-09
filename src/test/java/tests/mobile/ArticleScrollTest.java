@@ -10,10 +10,9 @@ public class ArticleScrollTest extends BaseMobileTest {
 
     @Test
     public void shouldScrollToHistorySection() {
-        ArticleMobilePage article = new OnboardingPage(driver, wait)
-                .skipIfPresent();
+        new OnboardingPage(driver, wait).skipIfPresent();
 
-        article = new HomeMobilePage(driver, wait)
+        ArticleMobilePage article = new HomeMobilePage(driver, wait)
                 .tapSearch()
                 .typeQuery("Appium")
                 .openFirstResult();
@@ -22,4 +21,3 @@ public class ArticleScrollTest extends BaseMobileTest {
         Assert.assertTrue(found, "Expected to find 'History' section in article after scrolling");
     }
 }
-

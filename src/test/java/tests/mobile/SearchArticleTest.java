@@ -10,10 +10,9 @@ public class SearchArticleTest extends BaseMobileTest {
 
     @Test
     public void shouldOpenArticleAndMatchTitle() {
-        ArticleMobilePage article = new OnboardingPage(driver, wait)
-                .skipIfPresent();
+        new OnboardingPage(driver, wait).skipIfPresent();
 
-        article = new HomeMobilePage(driver, wait)
+        ArticleMobilePage article = new HomeMobilePage(driver, wait)
                 .tapSearch()
                 .typeQuery("Selenium")
                 .openFirstResult();
@@ -26,4 +25,3 @@ public class SearchArticleTest extends BaseMobileTest {
         }
     }
 }
-
