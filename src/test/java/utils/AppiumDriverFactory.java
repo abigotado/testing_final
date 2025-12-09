@@ -14,18 +14,28 @@ public class AppiumDriverFactory {
     public static AndroidDriver createAndroidDriver() {
         DesiredCapabilities caps = new DesiredCapabilities();
         caps.setCapability("platformName", Config.get("appium.platformName"));
-        caps.setCapability("deviceName", Config.get("appium.deviceName"));
-        caps.setCapability("platformVersion", Config.get("appium.platformVersion"));
-        caps.setCapability("automationName", Config.get("appium.automationName"));
-        caps.setCapability("appPackage", Config.get("appium.appPackage"));
-        caps.setCapability("appActivity", Config.get("appium.appActivity"));
-        caps.setCapability("noReset", Config.getBoolean("appium.noReset", true));
-        caps.setCapability("autoGrantPermissions", true);
+        caps.setCapability("appium:deviceName", Config.get("appium.deviceName"));
+        String platformVersion = Config.get("appium.platformVersion");
+        if (platformVersion != null && !platformVersion.isBlank()) {
+            caps.setCapability("appium:platformVersion", platformVersion);
+        }
+        caps.setCapability("appium:automationName", Config.get("appium.automationName"));
+        caps.setCapability("appium:appPackage", Config.get("appium.appPackage"));
+        caps.setCapability("appium:appActivity", Config.get("appium.appActivity"));
+        caps.setCapability("appium:noReset", Config.getBoolean("appium.noReset", true));
+        caps.setCapability("appium:autoGrantPermissions", true);
+
         String appPath = Config.get("appium.app");
         if (appPath != null && !appPath.isBlank()) {
-            caps.setCapability("app", appPath);
+            caps.setCapability("appium:app", appPath);
         }
-        caps.setCapability("newCommandTimeout", 120);
+
+        String udid = Config.get("appium.udid");
+        if (udid != null && !udid.isBlank()) {
+            caps.setCapability("appium:udid", udid);
+        }
+
+        caps.setCapability("appium:newCommandTimeout", 120);
 
         try {
             return new AndroidDriver(new URL(Config.get("appium.server.url")), caps);
@@ -34,3 +44,4 @@ public class AppiumDriverFactory {
         }
     }
 }
+

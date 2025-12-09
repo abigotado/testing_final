@@ -10,10 +10,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public abstract class BaseMobilePage {
     protected final AndroidDriver driver;
     protected final WebDriverWait wait;
+    protected final String appPackage;
 
     protected BaseMobilePage(AndroidDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
+        this.appPackage = Config.get("appium.appPackage");
     }
 
     protected WebElement waitVisible(By locator) {
@@ -32,4 +34,9 @@ public abstract class BaseMobilePage {
         return waitVisible(AppiumBy.androidUIAutomator(
                 "new UiSelector().textContains(\"" + text + "\")"));
     }
+
+    protected By id(String suffix) {
+        return By.id(appPackage + suffix);
+    }
 }
+

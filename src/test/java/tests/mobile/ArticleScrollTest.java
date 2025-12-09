@@ -21,3 +21,4 @@ public class ArticleScrollTest extends BaseMobileTest {
         Assert.assertTrue(found, "Expected to find 'History' section in article after scrolling");
     }
 }
+

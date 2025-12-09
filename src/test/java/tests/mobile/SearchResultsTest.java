@@ -19,3 +19,4 @@ public class SearchResultsTest extends BaseMobileTest {
         Assert.assertTrue(search.getResults().size() > 0, "Search results should not be empty");
     }
 }
+
