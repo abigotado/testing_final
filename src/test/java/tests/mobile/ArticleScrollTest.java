@@ -17,7 +17,8 @@ public class ArticleScrollTest extends BaseMobileTest {
                 .typeQuery("Appium")
                 .openFirstResult();
 
-        boolean found = article.scrollToText("History");
+        boolean found = article.scrollToHistory();
         Assert.assertTrue(found, "Expected to find 'History' section in article after scrolling");
     }
 }
+
